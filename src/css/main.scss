@@ -1,1 +1,256 @@
-/* Your SCSS here. */
+//Variables
+$yellow: #ffd200;
+$red: #c1121f;
+$ink: #f5f7fb;
+$muted: #a7b0c0;
+$bg: #0e0f12;
+$surface: #14161b;
+$border: #23262d;
+$font-base: 16px;
+$line-height: 1.6;
+$maxw: 1100px;
+$nav-h: 72px; 
+$nav-h-small: 56px; 
+
+@mixin respond($bp) {
+  @if $bp == sm { @media (max-width: 640px) { @content; } }
+  @else if $bp == md { @media (max-width: 900px) { @content; } }
+  @else if $bp == lg { @media (max-width: 1200px) { @content; } }
+}
+
+@mixin flex-center { display: flex; align-items: center; justify-content: center; }
+@mixin overlay($opacity: 0.85) { 
+  &::before { content: ''; position: absolute; inset: 0; background: rgba(20, 22, 27, $opacity); z-index: 1; }
+}
+@mixin card-base { background: $surface; border: 1px solid $border; border-radius: 1rem; }
+@mixin btn-hover { 
+  &:hover { background: $yellow; color: #111; border-color: $yellow; }
+  &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+}
+
+//Base styles
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: $font-base;
+  line-height: $line-height;
+  color: $ink;
+  background: $bg;
+}
+.container { width: min(#{$maxw}, 92%); margin: 0 auto; }
+
+//Header
+.site-header {
+  position: sticky; top: 0; z-index: 9999;
+  backdrop-filter: saturate(120%) blur(6px);
+  background: rgba(20, 22, 27, 0.9); border-bottom: 1px solid $border;
+}
+.primary-nav {
+  @include flex-center; justify-content: space-between;
+  min-height: $nav-h; gap: 1rem; transition: min-height 0.3s ease;
+  
+  .brand-link {
+    display: inline-flex; flex-direction: column; text-decoration: none; color: $ink; transition: transform 0.3s ease;
+    .brand-top { font-weight: 800; letter-spacing: .25px; transition: font-size 0.3s ease; }
+    .brand-sub { color: $muted; font-size: .85rem; transition: font-size 0.3s ease, opacity 0.3s ease; }
+    &:hover .brand-top { color: $yellow; }
+  }
+  
+  .nav-toggle {
+    display: none; background: transparent; border: 0; cursor: pointer; padding: .5rem;
+    .bar { display: block; width: 24px; height: 2px; background: $ink; & + .bar { margin-top: 6px; } }
+    &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+  }
+  
+  .nav-menu {
+    list-style: none; display: flex; flex-wrap: wrap; margin: 0; padding: 0; gap: .5rem .75rem;
+    a {
+      display: inline-block; padding: .5rem .75rem; text-decoration: none; color: $ink; border-radius: .5rem;
+      transition: background .2s ease, color .2s ease, transform .06s ease, font-size 0.3s ease, box-shadow 0.2s ease;
+      &:hover { background: rgba(255, 210, 0, 0.12); color: $yellow; }
+      &:active { transform: translateY(1px); }
+      &.is-active { background: $yellow; color: #111; font-weight: 700; box-shadow: 0 2px 8px rgba(255, 210, 0, 0.3); }
+    }
+  }
+  
+  &.scrolled {
+    min-height: $nav-h-small;
+    .brand-link { transform: scale(0.9); .brand-top { font-size: 0.9em; } .brand-sub { font-size: 0.75rem; opacity: 0.8; } }
+    .nav-menu a { font-size: 0.9em; padding: .4rem .6rem; }
+  }
+  
+  @include respond(md) {
+    .nav-toggle { display: inline-block; }
+    .nav-menu {
+      position: fixed; inset: calc(#{$nav-h} + 1px) 0 auto 0; background: rgba(20,22,27,0.98);
+      border-bottom: 1px solid $border; display: none; flex-direction: column; gap: 0;
+      a { padding: 1rem 1.25rem; border-radius: 0; }
+      &.open { display: flex; }
+    }
+    &.scrolled .nav-menu { inset: calc(#{$nav-h-small} + 1px) 0 auto 0; }
+  }
+}
+
+//sections
+.section {
+  padding: clamp(72px, 10vh, 120px) 0; border-bottom: 1px solid $border;
+  
+  &--hero {
+    min-height: 60vh; display: grid; place-items: center; position: relative; text-align: center;
+    background-image: 
+      radial-gradient(1200px 400px at 10% -10%, rgba(255, 210, 0, 0.12), transparent 60%),
+      radial-gradient(1200px 400px at 100% 10%, rgba(193, 18, 31, 0.12), transparent 60%),
+      url('../assets/saul-office-bg.jpg');
+    background-size: auto, auto, 100%; background-position: center; background-attachment: scroll, scroll, fixed;
+    @include overlay(0.55);
+    .container { position: relative; z-index: 1; }
+    h1 { font-family: 'Times New Roman', serif; font-size: clamp(6rem, 6vw, 4rem); margin: 0 0 .5rem 0; }
+    .tagline { font-family: 'Brush Script MT', 'Lucida Handwriting', cursive; color: $muted; font-size: clamp(3rem, 2vw, 1.25rem); font-weight: 700; }
+  }
+}
+
+//about
+.about-content {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem;
+  @include respond(md) { grid-template-columns: 1fr; gap: 2rem; }
+}
+.about-text p { font-size: 1.1rem; line-height: 1.7; color: $ink; margin: 0; }
+.video-container {
+  position: relative; @include card-base; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  &::before {
+    content: ""; position: absolute; top: -0.5rem; left: 1.5rem; font-size: 1.5rem;
+    background: $surface; padding: 0 0.5rem; color: $yellow; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em;
+  }
+}
+.video-wrapper { position: relative; width: 100%; height: 0; padding-bottom: 56.25%; overflow: hidden; border-radius: 0.5rem; background: #000; contain: layout style paint; }
+.about-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 0.5rem; background: #000; }
+.video-caption { text-align: center; margin-top: 1rem; em { color: $muted; font-size: 0.9rem; font-style: italic; } }
+
+//Testimonials
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;
+  @include respond(md) { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.testimonial {
+  @include card-base; padding: 2rem; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+  &::before { content: '"'; position: absolute; top: -0.5rem; left: 1.5rem; font-size: 4rem; color: $yellow; font-family: serif; line-height: 1; }
+  blockquote { margin: 0 0 1.5rem 0; font-style: italic; line-height: 1.6; color: $ink; position: relative; z-index: 1; }
+  cite {
+    display: block; font-style: normal;
+    strong { display: block; color: $yellow; font-weight: 700; margin-bottom: 0.25rem; }
+    span { color: $muted; font-size: 0.9rem; }
+  }
+  &--clickable {
+    cursor: pointer;
+    &:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255, 210, 0, 0.2); }
+    &::after { content: "Click to see testimonial"; position: absolute; bottom: 1rem; right: 1rem; font-size: 0.75rem; color: $yellow; opacity: 0; transition: opacity 0.3s ease; }
+    &:hover::after { opacity: 1; }
+  }
+}
+.testimonial-image {
+  text-align: center; margin-bottom: 1.5rem;
+  .client-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid $yellow; box-shadow: 0 4px 12px rgba(255, 210, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .testimonial--clickable:hover & .client-photo { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255, 210, 0, 0.4); }
+}
+
+//Modal
+.modal {
+  position: fixed; inset: 0; z-index: 10000; @include flex-center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+  &.is-open { display: flex; opacity: 1; visibility: visible; }
+}
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(4px); }
+.modal-content {
+  position: relative; @include card-base; max-width: 90vw; max-height: 90vh; overflow: hidden; transform: scale(0.9) translateY(20px); transition: transform 0.3s ease;
+  .modal.is-open & { transform: scale(1) translateY(0); }
+}
+.modal-close {
+  position: absolute; top: 1rem; right: 1rem; @include flex-center; background: rgba(0, 0, 0, 0.5); border: none; color: $ink;
+  font-size: 1.5rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; z-index: 1;
+  &:hover { background: rgba(0, 0, 0, 0.7); transform: scale(1.1); }
+  &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+}
+.modal-body {
+  padding: 2rem; text-align: center;
+  h3 { margin: 0 0 1rem 0; color: $yellow; font-size: 1.5rem; }
+  .modal-image { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; margin: 0 auto 1rem auto; display: block; border: 4px solid $yellow; box-shadow: 0 6px 24px rgba(255, 210, 0, 0.3); }
+  .modal-testimonial {
+    font-style: italic; font-size: 1.1rem; line-height: 1.6; color: $ink; margin: 1.5rem 0; padding: 1rem;
+    background: rgba(255, 210, 0, 0.1); border-left: 4px solid $yellow; border-radius: 0.5rem; position: relative;
+    &::before { content: '"'; position: absolute; top: -0.5rem; left: 0.5rem; font-size: 3rem; color: $yellow; font-family: serif; line-height: 1; }
+  }
+  .modal-description { color: $muted; margin: 0; font-style: italic; }
+}
+
+//Carousel
+.carousel-container { position: relative; margin-top: 3rem; max-width: 800px; margin: 3rem auto 0; }
+.carousel-wrapper { position: relative; overflow: hidden; border-radius: 1rem; @include card-base; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); }
+.carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+.carousel-slide {
+  min-width: 100%; flex-shrink: 0; padding: 3rem 2rem; display: none; position: relative;
+  background-size: cover; background-position: center; background-repeat: no-repeat;
+  &.active { display: block; }
+  @include overlay(0.4);
+  .case-card { position: relative; z-index: 2; }
+
+  &:nth-child(1) { background-image: url('../assets/chuck-case-1.png'); }
+  &:nth-child(2) { background-image: url('../assets/huell-case-2.jpg'); }
+  &:nth-child(3) { background-image: url('../assets/acker-case-3.png'); }
+  &:nth-child(4) { background-image: url('../assets/jesse-case-4.png'); }
+}
+
+.case-card { text-align: center; max-width: 600px; margin: 0 auto; }
+.case-number { display: inline-block; background: $yellow; color: #111; padding: 0.5rem 1rem; border-radius: 2rem; font-weight: 700; font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.case-title { color: $yellow; font-size: 1.8rem; font-weight: 700; margin: 0 0 1rem 0; line-height: 1.3; }
+.case-subtitle { color: $muted; font-style: italic; font-size: 1.1rem; margin-bottom: 2rem; border-left: 3px solid $yellow; padding-left: 1rem; text-align: left; max-width: 500px; margin: 0 auto 2rem; }
+.case-description { color: $ink; line-height: 1.7; font-size: 1rem; margin: 0; text-align: left; }
+
+.carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); @include flex-center;
+  background: rgba(20, 22, 27, 0.9); border: 1px solid $border; color: $ink;
+  width: 3rem; height: 3rem; border-radius: 50%; cursor: pointer; font-size: 1.5rem; font-weight: bold;
+  transition: all 0.3s ease; z-index: 10;
+  &:hover { background: $yellow; color: #111; border-color: $yellow; transform: translateY(-50%) scale(1.1); }
+  &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+  &--prev { left: -1.5rem; }
+  &--next { right: -1.5rem; }
+  @include respond(md) {
+    width: 2.5rem; height: 2.5rem; font-size: 1.2rem;
+    &--prev { left: -1.25rem; }
+    &--next { right: -1.25rem; }
+  }
+}
+
+.carousel-indicators { display: flex; justify-content: center; gap: 0.5rem; margin-top: 2rem; }
+.carousel-indicator {
+  width: 12px; height: 12px; border-radius: 50%; border: 2px solid $muted; background: transparent; cursor: pointer; transition: all 0.3s ease;
+  &:hover { border-color: $yellow; background: rgba(255, 210, 0, 0.3); }
+  &.active { background: $yellow; border-color: $yellow; }
+  &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+}
+
+//Contact
+.site-footer { padding: 2rem 0; color: $muted; text-align: center; background: $surface; border-top: 1px solid $border; }
+.section--fixed-bg {
+  background-image: url('../assets/saul-office-bg.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;
+  @include overlay(0.8);
+  .container { position: relative; z-index: 1; }
+}
+.contact-content {
+  text-align: center; max-width: 600px; margin: 0 auto;
+  h2 { color: $yellow; font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 1.5rem 0; font-weight: 700; }
+  p { font-size: 1.1rem; line-height: 1.7; margin: 0 0 2rem 0; color: $ink; }
+}
+.contact-list { list-style: none; padding: 0; margin: 0 0 2rem 0; li { margin-bottom: 0.5rem; font-size: 1.1rem; color: $ink; &:last-child { margin-bottom: 0; } } }
+.social-links {
+  display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0;
+  a {
+    @include flex-center; width: 3rem; height: 3rem; background: $surface; border: 2px solid $border; border-radius: 50%; color: $ink; text-decoration: none; transition: all 0.3s ease; font-size: 1.2rem;
+    &:hover { background: $yellow; border-color: $yellow; color: #111; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255, 210, 0, 0.3); }
+    &:focus-visible { outline: 2px solid $yellow; outline-offset: 2px; }
+    i { font-size: 1.2rem; }
+  }
+}
+.contact-disclaimer { margin-top: 2rem; font-size: 0.9rem; color: $muted; font-style: italic; }

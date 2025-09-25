@@ -1,13 +1,327 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MP1</title>
-    </head>
-    <body>
-        <h1>Hello World! Welcome to MP1!</h1>
-        <img src="assets/image.jpg">
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saul Goodman | Criminal Lawyer</title>
+    <meta name="description" content="Portfolio parody">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+
+    <header class="site-header" role="banner">
+      <nav class="primary-nav">
+        <div class="brand">
+          <a href="#home" class="brand-link">
+            <span class="brand-top">Saul Goodman</span>
+            <span class="brand-sub">Criminal Lawyer</span>
+          </a>
+        </div>
+        <button class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="content">
+      <section id="home" class="section section--hero">
+        <div class="container">
+          <h1 id="home-title">Need a lawyer?</h1>
+          <p class="tagline">“Better call Saul.”</p>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <h2 id="about-title">About</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p>Hi, I’m Saul Goodman, Albuquerque’s friendliest neighborhood attorney and your one-stop shop for legal solutions. You’ve probably seen me on TV, maybe even laughed at my ads, but behind the bright suits and catchy slogans is a lawyer who gets results. From minor slip-and-falls to major courtroom battles, I bring hustle, heart, and a little creative thinking to every case. The law doesn’t have to be boring...and it shouldn’t leave you broke. I’m here to fight for you, make the system work in your favor, and keep you out of orange jumpsuits. Trouble? Better Call Saul!</p>
+            </div>
+            <div class="video-container">
+              <div class="video-wrapper">
+                <video
+                  class="about-video"
+                  controls
+                  preload="metadata"
+                  poster="assets/saul-bg-1.png"
+                  playsinline
+                  muted
+                  >
+                <source src="assets/saul-ad.mp4" type="video/mp4" />
+                Sorry, your browser does not support embedded videos.
+                </video>                
+              </div>
+              <div class="video-caption">
+                <em>Better call Saul as seen on TV!</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="cases" class="section">
+        <div class="container">
+          <h2 id="cases-title"> Landmark Cases </h2>
+          <p>A curated portfolio of cases that showcase Saul's legal expertise.</p>
+          
+          <div class="carousel-container">
+            <div class="carousel-wrapper">
+              <div class="carousel-track" id="carousel-track">
+                <div class="carousel-slide active">
+                  <div class="case-card">
+                    <div class="case-number">Case 1</div>
+                    <h3 class="case-title">Standing Tall Against the Odds</h3>
+                    <div class="case-subtitle">"Victory in the State Bar Disciplinary Hearing"</div>
+                    <p class="case-description">When faced with allegations that could have ended his legal career, Saul Goodman proved his resilience and skill. By challenging every claim and turning the tables on his accuser, he successfully defended his right to practice law. A testament to his relentless advocacy — if Saul can fight for himself, imagine what he can do for you.</p>
+                  </div>
+                </div>
+                
+                <div class="carousel-slide">
+                  <div class="case-card">
+                    <div class="case-number">Case 2</div>
+                    <h3 class="case-title">Justice for Huell Babineaux</h3>
+                    <div class="case-subtitle">"A Favourable Ruling for a Loyal Client"</div>
+                    <p class="case-description">A loyal client faced harsh consequences for a nonviolent offense. Saul Goodman worked tirelessly to ensure fairness prevailed, securing a ruling that gave Huell the chance to move forward without his life being ruined. Saul believes everyone deserves a second chance — and he makes sure the system remembers it too.</p>
+                  </div>
+                </div>
+                
+                <div class="carousel-slide">
+                  <div class="case-card">
+                    <div class="case-number">Case 3</div>
+                    <h3 class="case-title">David vs. Goliath</h3>
+                    <div class="case-subtitle">"Protecting Mr. Acker's Home"</div>
+                    <p class="case-description">When a major corporation tried to push an elderly homeowner out of his lifelong residence, Saul Goodman stood firm. Through sharp negotiation and creative legal maneuvering, he secured a ruling that gave Mr. Acker the settlement he deserved. Proof that Saul fights for the little guy when it matters most.</p>
+                  </div>
+                </div>
+                
+                <div class="carousel-slide">
+                  <div class="case-card">
+                    <div class="case-number">Case 4</div>
+                    <h3 class="case-title">Financial Guidance with Discretion</h3>
+                    <div class="case-subtitle">"Helping Small Business Owners Manage Complex Finances"</div>
+                    <p class="case-description">Not all cases are in the courtroom. Saul has helped entrepreneurs and local business owners navigate complicated financial situations, ensuring they stay compliant while maximizing their opportunities. Always discreet, always efficient — Saul delivers peace of mind for clients with big ambitions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <button class="carousel-btn carousel-btn--prev">
+              <span>‹</span>
+            </button>
+            <button class="carousel-btn carousel-btn--next">
+              <span>›</span>
+            </button>
+            
+            <div class="carousel-indicators">
+              <button class="carousel-indicator active" data-slide="0"></button>
+              <button class="carousel-indicator" data-slide="1"></button>
+              <button class="carousel-indicator" data-slide="2"></button>
+              <button class="carousel-indicator" data-slide="3"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="section">
+        <div class="container">
+          <h2 id="testimonials-title">Happy Clients</h2>
+          <div class="testimonials-grid">
+            <div class="testimonial testimonial--clickable" data-modal="howard-modal">
+              <div class="testimonial-image">
+                <img src="assets/howard-testimonial.png" alt="Howard Hamlin, HHM Partner" class="client-photo">
+              </div>
+              <cite>
+                <strong>Howard Hamlin</strong>
+                <span>HHM Partner</span>
+              </cite>
+            </div>
+            
+            <div class="testimonial testimonial--clickable" data-modal="irene-modal">
+              <div class="testimonial-image">
+                <img src="assets/irene-testimonial.webp" alt="Irene Landry, Head Negotiator for Sandpiper case" class="client-photo">
+              </div>
+              <cite>
+                <strong>Irene Landry</strong>
+                <span>Head Negotiator for Sandpiper case</span>
+              </cite>
+            </div>
+            
+            <div class="testimonial testimonial--clickable" data-modal="huell-modal">
+              <div class="testimonial-image">
+                <img src="assets/huell-testimonial.webp" alt="Huell Babineaux, Bodyguard" class="client-photo">
+              </div>
+              <cite>
+                <strong>Huell Babineaux</strong>
+                <span>Bodyguard</span>
+              </cite>
+            </div>
+            <div class="testimonial testimonial--clickable" data-modal="acker-modal">
+              <div class="testimonial-image">
+                <img src="assets/acker-testimonial.jpg" alt="Mr. Acker, Elderly homeowner" class="client-photo">
+              </div>
+              <cite>
+                <strong>Mr. Acker</strong>
+                <span>Elderly homeowner</span>
+              </cite>
+            </div>
+            
+            <div class="testimonial testimonial--clickable" data-modal="cal-lars-modal">
+              <div class="testimonial-image">
+                <img src="assets/cal-lars-testimonial.webp" alt="Cal & Lars Lindholm, Saul's clients" class="client-photo">
+              </div>
+              <cite>
+                <strong>Cal & Lars Lindholm</strong>
+                <span>Saul's clients</span>
+              </cite>
+            </div>
+            <div class="testimonial testimonial--clickable" data-modal="hank-modal">
+              <div class="testimonial-image">
+                <img src="assets/hank.webp" alt="Hank Schrader, DEA Agent" class="client-photo">
+              </div>
+              <cite>
+                <strong>Hank Schrader</strong>
+                <span>DEA Agent</span>
+              </cite>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section--fixed-bg">
+        <div class="container">
+          <div class="contact-content">
+            <h2 id="contact-title">Better Call Saul...Today!</h2>
+            <p>Why face the judge alone? Call Saul Goodman and put Albuquerque’s most colorful lawyer on your side. Big case? Small case? No case is too weird. Call now! Operators are standing by!*</p>
+            <ul class="contact-list">
+              <li>Call Now: (505) 503-4455</a></li>
+              <li>Visit Us: 9800 Montgomery Blvd NE, Albuquerque, NM 87111</a></li>
+            </ul>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/saul-goodman-02437b228/" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://youtube.com/@theofficialsaulgoodmanyout1218?si=rjel482XWH78j2lX" target="_blank" rel="noopener">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </div>
+            <p class="contact-disclaimer"><em>*Disclaimer: Operators may actually be Saul himself.</em></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small> This website is a fan-made parody intended for humor and commentary. All trademarks and copyrighted material belong to their respective owners.</small>
+      </div>
+    </footer>
+
+    <div id="hank-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="modal-title">Hank Schrader</h3>
+          <img src="assets/hank.webp" alt="Hank Schrader, DEA Agent" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "Look, I'm not saying I like the guy. But I'll give him this: Saul Goodman knows his way around a courtroom. Even when you think he's cornered, he finds a way out. Annoyingly effective."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div id="howard-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="howard-modal-title">Howard Hamlin</h3>
+          <img src="assets/howard-testimonial.png" alt="Howard Hamlin, HHM Partner" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "Jimmy McGill — or Saul Goodman, as he now calls himself — is nothing if not persistent. I've seen his 'Charlie Hustle' up close: the creativity, the energy, the relentless drive to make something happen. He'll work angles others won't even see. If you want someone who won't stop pushing, Saul's your man."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div id="irene-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="irene-modal-title">Irene Landry</h3>
+          <img src="assets/irene-testimonial.webp" alt="Irene Landry, Head Negotiator for Sandpiper case" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "I don't know why Jimmy changed his name to Saul, but Saul helped me and my friends with the Sandpiper class action lawsuit when it felt like nobody else was listening. He explained everything, fought for us, and made sure we were treated fairly. I'll always be grateful."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div id="huell-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="huell-modal-title">Huell Babineaux</h3>
+          <img src="assets/huell-testimonial.webp" alt="Huell Babineaux, Bodyguard" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "Mr. Goodman? He doesn't just do the job, he goes the extra mile. I've seen it myself. Doesn't matter how tricky the situation, he'll figure something out. That's why I trust him."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div id="acker-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="acker-modal-title">Mr. Acker</h3>
+          <img src="assets/acker-testimonial.jpg" alt="Mr. Acker, Elderly homeowner" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "When Mesa Verde tried to push me off my own land, Saul Goodman stood up for me. He fought tooth and nail and got me more than I ever thought possible. He's a fighter for the little guy — plain and simple."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div id="cal-lars-modal" class="modal" role="dialog">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close">
+          <span>&times;</span>
+        </button>
+        <div class="modal-body">
+          <h3 id="cal-lars-modal-title">Cal & Lars Lindholm</h3>
+          <img src="assets/cal-lars-testimonial.webp" alt="Cal & Lars Lindholm, Saul's clients" class="modal-image">
+          <blockquote class="modal-testimonial">
+            "We thought we were in real deep — like life sentence deep — after crossing the wrong guy. Saul swooped in, worked his magic, and somehow turned 'life in prison' into six months probation. He literally saved our skins. We'll never forget it."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>
